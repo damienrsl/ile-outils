@@ -157,12 +157,12 @@ section>.etiquette{display:block;margin:0 4px 10px}
 .ile.pilule{width:auto;min-width:190px;padding:0 16px;white-space:nowrap;height:34px;border-radius:0 0 18px 18px;display:flex;align-items:center;justify-content:center;gap:10px;font:500 13px var(--police);cursor:pointer}
 .ile.pilule .orbe{--d:10px}
 .ile.pilule .att{font:600 11px var(--police-mono);color:rgba(255,255,255,.7);letter-spacing:.06em}
-.ile.ouverte{width:min(100%,560px);padding:14px 16px 16px}
+.ile.ouverte{width:min(100%,560px);box-sizing:border-box;padding:14px 14px 16px}
 .ile .titre{display:flex;justify-content:space-between;align-items:center;font:600 10px var(--police-mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:0 0 10px}
 .ile .titre b{color:#fff;font-weight:600}
 .pupitre{display:grid;grid-template-columns:1.5fr 1fr;gap:10px}
 @media(max-width:520px){.pupitre{grid-template-columns:1fr}}
-.tuile{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:12px 14px;min-height:64px}
+.tuile{box-sizing:border-box;min-width:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:12px 14px;min-height:64px}
 .tuile .lab{font:600 10px var(--police-mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:8px}
 .tuile .lab .orbe{--d:8px}
 .tuile .val{font:600 18px var(--police);margin-top:4px;letter-spacing:-.01em}
@@ -177,7 +177,7 @@ section>.etiquette{display:block;margin:0 4px 10px}
 .presse li:first-child{border-top:0}
 .presse li span{color:rgba(255,255,255,.4);font:500 11px var(--police-mono)}
 .attente{margin-top:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:12px}
-.fiche{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;background:rgba(47,107,224,.12);border:1px solid rgba(79,168,247,.25);margin-top:8px}
+.fiche{box-sizing:border-box;display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;background:rgba(47,107,224,.12);border:1px solid rgba(79,168,247,.25);margin-top:8px}
 .fiche .orbe{--d:14px;flex:none}
 .fiche .q{font:500 14px var(--police);line-height:1.3}
 .fiche .q small{display:block;color:rgba(255,255,255,.5);font-size:12px;margin-top:2px}
