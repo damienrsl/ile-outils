@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>L'île, outils d'abord : 3 propositions</title>
+<style>
+/*KIT*/
+main{max-width:640px;margin:0 auto;position:relative;z-index:1;padding:0 16px 60px}
+.hero{padding:60px 4px 26px;position:relative}
+.hero .orbe{--d:70px;position:absolute;right:6px;top:44px}
+.hero h1{font-size:33px;line-height:1.08;letter-spacing:-.03em;max-width:14ch}
+.hero p{margin:16px 0 0;font-size:16px;line-height:1.5;max-width:38ch;color:var(--texte-2)}
+.hero p b,.carte p b,.spec p b,.chiffre p b{color:var(--texte)}
+section{margin:34px 0}
+section>.etiquette{display:block;margin:0 4px 10px}
+.carte{padding:20px;margin-bottom:12px}
+.carte h2{font-size:23px;letter-spacing:-.02em;line-height:1.15}
+.carte>p{margin:10px 0 0;line-height:1.55;color:var(--texte-2)}
+.reco{display:inline-block;margin-left:10px;vertical-align:middle;font:600 11px var(--police-mono);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,var(--bleu-chat),var(--bleu-renard));padding:4px 9px;border-radius:var(--r-pilule)}
+.chiffre{display:flex;gap:14px;align-items:baseline;padding:12px 0;border-top:1px solid var(--filet)}
+.chiffre:first-of-type{border-top:0;padding-top:2px}
+.chiffre .gros{font-family:var(--large);font-size:30px;letter-spacing:-.03em;color:var(--pan-3);min-width:92px;line-height:1}
+.chiffre p{margin:0;font-size:14px;line-height:1.45;color:var(--texte-2)}
+.spec{padding:14px 0;border-top:1px solid var(--filet)}
+.spec:first-of-type{border-top:0;padding-top:4px}
+.num{font:600 12px var(--police-mono);color:var(--pan-3);letter-spacing:.06em}
+.spec h3{font-size:18px;margin-top:4px;letter-spacing:-.01em}
+.spec p{margin:6px 0 0;font-size:14px;line-height:1.5;color:var(--texte-2)}
+.spec ul{margin:8px 0 0;padding-left:18px;color:var(--texte-2);font-size:14px;line-height:1.55}
+.franc{border-left:2px solid var(--pan-2);padding:14px 16px;margin:14px 0 0;color:var(--texte-2);font-size:14px;line-height:1.5;border-radius:0 var(--r-m) var(--r-m) 0;background:rgba(40,95,255,.05)}
+.pied{font-size:13px;color:var(--texte-3);line-height:1.5;margin:40px 4px 0}
+/* ---- la maquette de l'île ---- */
+.ecran{margin:14px -6px 0;padding:0 0 22px;border-radius:var(--r-l);background:linear-gradient(180deg,#0b1022,#17224d 60%,#1c2b63);overflow:hidden;position:relative}
+.barre-menus{height:30px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;color:rgba(255,255,255,.75);font:500 12px var(--police)}
+.ile{margin:0 auto;background:#0a0c14;color:#fff;border-radius:0 0 26px 26px;box-shadow:0 20px 50px -20px rgba(0,0,0,.8);overflow:hidden;transition:all .34s var(--ressort,cubic-bezier(.2,.9,.3,1.1))}
+.ile.pilule{width:auto;min-width:190px;padding:0 16px;white-space:nowrap;height:34px;border-radius:0 0 18px 18px;display:flex;align-items:center;justify-content:center;gap:10px;font:500 13px var(--police);cursor:pointer}
+.ile.pilule .orbe{--d:10px}
+.ile.pilule .att{font:600 11px var(--police-mono);color:rgba(255,255,255,.7);letter-spacing:.06em}
+.ile.ouverte{width:min(100%,560px);padding:14px 16px 16px}
+.ile .titre{display:flex;justify-content:space-between;align-items:center;font:600 10px var(--police-mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:0 0 10px}
+.ile .titre b{color:#fff;font-weight:600}
+.pupitre{display:grid;grid-template-columns:1.5fr 1fr;gap:10px}
+@media(max-width:520px){.pupitre{grid-template-columns:1fr}}
+.tuile{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:12px 14px;min-height:64px}
+.tuile .lab{font:600 10px var(--police-mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:8px}
+.tuile .lab .orbe{--d:8px}
+.tuile .val{font:600 18px var(--police);margin-top:4px;letter-spacing:-.01em}
+.tuile .sous{font:400 12px var(--police);color:rgba(255,255,255,.55);margin-top:2px}
+.boutons{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.b{font:600 11px var(--police-mono);letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 11px;cursor:pointer;transition:background .15s}
+.b:hover,.b.on{background:rgba(47,107,224,.55);border-color:rgba(79,168,247,.6)}
+.curseur{height:4px;border-radius:2px;background:rgba(255,255,255,.14);margin-top:10px;position:relative}
+.curseur i{position:absolute;left:0;top:0;height:100%;width:62%;border-radius:2px;background:linear-gradient(90deg,#2f6be0,#4fa8f7)}
+.presse{list-style:none;margin:8px 0 0;padding:0;font:400 12px var(--police);color:rgba(255,255,255,.85)}
+.presse li{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:1px solid rgba(255,255,255,.07);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.presse li:first-child{border-top:0}
+.presse li span{color:rgba(255,255,255,.4);font:500 11px var(--police-mono)}
+.attente{margin-top:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:12px}
+.fiche{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;background:rgba(47,107,224,.12);border:1px solid rgba(79,168,247,.25);margin-top:8px}
+.fiche .orbe{--d:14px;flex:none}
+.fiche .q{font:500 14px var(--police);line-height:1.3}
+.fiche .q small{display:block;color:rgba(255,255,255,.5);font-size:12px;margin-top:2px}
+.fiche .b{margin-left:auto;flex:none}
+.fiche.calme{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.touche{display:inline-block;min-width:26px;text-align:center;padding:4px 8px;border-radius:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);font:600 12px var(--police-mono);color:#fff;margin:0 4px 0 0}
+.clavier{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center;font:400 13px var(--police);color:rgba(255,255,255,.85);margin-top:4px}
+.essai{font:500 12px var(--police);color:var(--texte-3);margin:8px 4px 0}
+.vote{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.vote .puce{background:rgba(255,255,255,.7);border:1px solid var(--filet);color:var(--texte-2);font:500 14px var(--police);padding:9px 14px;border-radius:var(--r-pilule);cursor:pointer}
+.vote .puce.on{color:#fff;border-color:transparent;background:linear-gradient(135deg,var(--bleu-chat),var(--bleu-renard))}
+.bilan{margin-top:12px;font-size:14px;color:var(--texte-2);line-height:1.5;min-height:22px}
+</style>
+</head>
+<body>
+<main>
+<div class="hero">
+  <span class="etiquette">Île de l'Encart · propositions · 21 nov.</span>
+  <span class="orbe"></span>
+  <h1>L'île, outils d'abord</h1>
+  <p>Trois façons de refaire la task bar : au clic, <b>les outils que tu utilisais dans l'ancien tiroir</b> (musique, son, presse-papiers), puis <b>la pile de ce qui t'attend</b>. Rien qui martèle. Tu choisis, je construis.</p>
+</div>
+
+<section>
+  <span class="etiquette">Avant de choisir · ce que disent les chiffres</span>
+  <div class="verre carte">
+    <div class="chiffre"><span class="gros">26 / j</span><p><b>Ouvertures de l'ancien tiroir</b> (30 sept. → 3 nov.), 858 par survol de la face. L'île : 7 par jour, 3 la dernière semaine.</p></div>
+    <div class="chiffre"><span class="gros">40</span><p><b>Clics sur l'onglet Outils</b> de l'ancien tiroir en 22 jours, 3 changements de sortie son, 1 presse-papiers recopié.</p></div>
+    <div class="chiffre"><span class="gros">0</span><p><b>Clics musique mesurés</b> : pause, suivant et volume n'étaient pas notés dans le journal. La musique vivait dans l'en-tête du tiroir, accessible sans onglet. Les chiffres ne peuvent ni confirmer ni contredire « c'est ce que j'utilisais le plus ».</p></div>
+    <div class="chiffre"><span class="gros">6</span><p><b>Usages d'un outil sur l'île</b> en 18 jours (musique 2, quota 1, touche 3). Outils est le 4e onglet : trois clics pour mettre pause.</p></div>
+    <div class="franc">Franchement : ce que tu faisais le plus, c'était ouvrir le tiroir d'un survol et répondre aux fiches. Les outils comptaient peu dans le journal, mais la musique n'y était pas. Je pars donc sur ta mémoire, et je mesure chaque clic d'outil dès la v1 pour trancher dans deux semaines.</div>
+  </div>
+</section>
+
+<section>
+  <span class="etiquette">Proposition 1 · recommandée</span>
+  <div class="verre carte">
+    <h2>Le pupitre<span class="reco">Recommandée</span></h2>
+    <p>Un survol ou un clic sur l'encoche : l'île s'ouvre <b>directement sur les outils</b>, sans onglet. Une tuile par geste : musique, son, presse-papiers, micro. Dessous, <b>la pile</b> : ce qui attend ta réponse, une fiche par projet.</p>
+    <p class="essai">Essaie : touche la pilule.</p>
+    <div class="ecran" id="m1">
+      <div class="barre-menus"><span>Code &nbsp; Fichier</span><span>mer. 4 déc. 21:40</span></div>
+      <div class="ile pilule" onclick="ouvrir('m1')"><span class="orbe"></span><span>Pink + White</span><span class="att">2 EN ATTENTE</span></div>
+      <div class="ile ouverte" style="display:none">
+        <div class="titre"><span><b>Outils</b> · le pupitre</span><span>Quota 27 % · fermer ⎋</span></div>
+        <div class="pupitre">
+          <div class="tuile">
+            <div class="lab"><span class="orbe"></span>Musique · Spotify</div>
+            <div class="val">Pink + White</div>
+            <div class="sous">Frank Ocean · en lecture</div>
+            <div class="boutons"><span class="b">Précédent</span><span class="b on">Pause</span><span class="b">Suivant</span></div>
+            <div class="curseur"><i></i></div>
+          </div>
+          <div class="tuile">
+            <div class="lab"><span class="orbe"></span>Son · AirPods Pro</div>
+            <div class="val">62 %</div>
+            <div class="boutons"><span class="b">−</span><span class="b">+</span><span class="b">Couper</span><span class="b">Vers Mac</span></div>
+          </div>
+          <div class="tuile">
+            <div class="lab"><span class="orbe"></span>Presse-papiers · clic = recopier</div>
+            <ul class="presse">
+              <li>Lien du guide Tokyo refait<span>2 min</span></li>
+              <li>IMG_4412.jpg · 2,1 Mo<span>9 min</span></li>
+              <li>« On tourne demain 10 h, gare de… »<span>31 min</span></li>
+              <li>Chemin NAS 07_EXPORTS/J14<span>1 h</span></li>
+            </ul>
+          </div>
+          <div class="tuile">
+            <div class="lab"><span class="orbe"></span>Micro · étagère</div>
+            <div class="val">Ouvert</div>
+            <div class="boutons"><span class="b">Couper</span><span class="b">Garer un fichier</span></div>
+          </div>
+        </div>
+        <div class="attente">
+          <div class="titre"><span><b>En attente</b> · 2</span><span>la plus ancienne d'abord</span></div>
+          <div class="fiche"><span class="orbe"></span><div class="q">Miniature J14 : la version sombre ou la claire ?<small>Contenu · attend depuis 4 min · push iPhone à 10</small></div><span class="b">Répondre</span></div>
+          <div class="fiche calme"><span class="orbe"></span><div class="q">Intro épisode 12 : 38 s à juger<small>Contenu · rendu arrivé il y a 1 h</small></div><span class="b">Voir</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="spec"><span class="num">POURQUOI CELLE-LÀ</span><h3>Un geste, un résultat</h3><p>Pause, piste suivante, volume, recopier un lien : <b>un seul clic après l'ouverture</b>, au lieu de trois aujourd'hui. Le presse-papiers et l'étagère reviennent de l'ancien tiroir, code déjà écrit. Rien ne s'ouvre seul, sauf une vraie question ou une vidéo à juger.</p></div>
+    <div class="spec"><span class="num">LE PRIX</span><h3>Deux sessions</h3><p>Une pour le pupitre (musique précédent/suivant et volume existent déjà en AppleScript ; presse-papiers et étagère à reprendre de l'ancien code), une pour la pile et le push à 10 min.</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="etiquette">Proposition 2</span>
+  <div class="verre carte">
+    <h2>La musique sur la pilule</h2>
+    <p>Comme la 1, mais <b>la pilule fermée pilote déjà la musique</b> : titre qui défile, pause d'un clic, piste suivante d'un glissement. Le pupitre complet n'apparaît qu'au survol. Pour quelqu'un qui change de morceau vingt fois par jour.</p>
+    <div class="ecran">
+      <div class="barre-menus"><span>Code &nbsp; Fichier</span><span>mer. 4 déc. 21:40</span></div>
+      <div class="ile pilule" style="width:280px;cursor:default"><span class="orbe"></span><span>Pink + White</span><span class="b" style="padding:3px 8px">Pause</span><span class="b" style="padding:3px 8px">›</span><span class="att">2</span></div>
+    </div>
+    <div class="spec"><span class="num">LE RISQUE</span><h3>Une pilule chargée</h3><p>La pilule a toujours montré <b>une seule info à la fois</b>. Musique + compteur + pause, c'est trois. Et un clic raté sur « Pause » quand tu visais l'encoche. Je ne le ferais qu'après avoir mesuré la 1 pendant deux semaines.</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="etiquette">Proposition 3</span>
+  <div class="verre carte">
+    <h2>La palette clavier</h2>
+    <p>Pas de panneau d'outils : <b>une touche, un geste</b>, mains sur le clavier. L'île n'affiche plus que la pile. Pour zéro souris, mais il faut retenir cinq touches.</p>
+    <div class="ecran" style="padding:16px 18px 20px">
+      <div class="clavier">
+        <span><span class="touche">⌃</span><span class="touche">Espace</span><span class="touche">M</span></span><span>Pause / lecture</span>
+        <span><span class="touche">⌃</span><span class="touche">Espace</span><span class="touche">→</span></span><span>Piste suivante</span>
+        <span><span class="touche">⌃</span><span class="touche">Espace</span><span class="touche">↑</span></span><span>Volume + 10</span>
+        <span><span class="touche">⌃</span><span class="touche">Espace</span><span class="touche">V</span></span><span>Presse-papiers : les 5 derniers, un chiffre pour recopier</span>
+        <span><span class="touche">⌃</span><span class="touche">Espace</span><span class="touche">A</span></span><span>La pile « En attente »</span>
+      </div>
+    </div>
+    <div class="spec"><span class="num">LE RISQUE</span><h3>Invisible, donc oublié</h3><p>Ce qui ne se voit pas ne s'utilise pas : l'audit dit que tu ouvres au survol, pas au clavier. La palette peut <b>s'ajouter</b> à la 1 plus tard, pas la remplacer.</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="etiquette">La pile « En attente » · commune aux trois</span>
+  <div class="verre carte">
+    <h2>Ce qui attend, et rien d'autre</h2>
+    <div class="spec"><span class="num">1</span><h3>Une fiche par projet qui a besoin de toi</h3><p>Orbe à la couleur de l'espace, titre en mots simples, « attend depuis 4 min », le bouton de la réponse. Seulement <b>les questions et les vidéos à juger</b> ; les actions graves de Tokn restent dans Tokn avec leur Annuler.</p></div>
+    <div class="spec"><span class="num">2</span><h3>Jamais repliée seule</h3><p>Une fiche reste jusqu'à ta réponse. Les suivantes s'empilent derrière, le compteur sur la pilule. À 10 min sans réponse, <b>push iPhone</b>, et c'est tout : pas de son, pas de secousse, l'orbe gagne en intensité.</p></div>
+    <div class="spec"><span class="num">3</span><h3>Ce qu'on retire</h3><p>La vue À trancher (remplacée par la pile), Pourquoi (2 clics en 18 jours), Pans comme vue séparée (la pile dit déjà quel projet attend), Batterie, le quota détaillé (un chiffre dans le coin suffit).</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="etiquette">Le plan · si tu dis oui à la 1</span>
+  <div class="verre carte">
+    <div class="spec"><span class="num">ÉTAPE 1</span><h3>Les gels d'abord</h3><p>13 relances par jour, 145 gels détectés. Trouver la cause avant de redessiner, sinon le beau pupitre plante aussi.</p></div>
+    <div class="spec"><span class="num">ÉTAPE 2</span><h3>Le pupitre</h3><p>Musique (précédent, pause, suivant, volume), son (−, +, couper, sortie), presse-papiers (5 derniers, recopier, glisser), micro, étagère. Chaque clic noté dans le journal.</p></div>
+    <div class="spec"><span class="num">ÉTAPE 3</span><h3>La pile et le push à 10 min</h3><p>Fiches persistantes, compteur, push, filtre des actions graves côté Tokn.</p></div>
+    <div class="spec"><span class="num">ÉTAPE 4</span><h3>Le ménage</h3><p>Retrait des vues inutiles, un chiffre de quota, test bout en bout, capture avant / après.</p></div>
+    <div class="spec"><span class="num">ÉTAPE 5</span><h3>Le verdict à deux semaines</h3><p>Clics d'outils par jour, questions oubliées (cible 0), relances (cible 0). On garde, on ajuste, ou on passe à la 2.</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="etiquette">Ton retour</span>
+  <div class="verre carte">
+    <h2>Laquelle ?</h2>
+    <p>Touche une proposition, puis dis-le-moi dans Tokn avec ce que tu changerais : un outil en plus, un en moins, une tuile à déplacer.</p>
+    <div class="vote">
+      <span class="puce" data-v="1">Le pupitre</span>
+      <span class="puce" data-v="2">La musique sur la pilule</span>
+      <span class="puce" data-v="3">La palette clavier</span>
+      <span class="puce" data-v="0">Aucune, je t'explique</span>
+    </div>
+    <div class="bilan" id="bilan"></div>
+  </div>
+</section>
+
+<p class="pied">Source des chiffres : journal de mesure de l'Encart, 53 jours (30 sept. → 21 nov.), rapport audit/usage-ile-2026-11-21.md dans le dépôt damienprime-encart. Maquettes : textes d'exemple, pas de vraies données.</p>
+</main>
+<script>
+if(location.hash==='#m1'){window.addEventListener('load',function(){ouvrir('m1');document.getElementById('m1').scrollIntoView();});}
+function ouvrir(id){var e=document.getElementById(id);var p=e.querySelector('.pilule'),o=e.querySelector('.ouverte');if(o.style.display==='none'){p.style.display='none';o.style.display='block';}else{o.style.display='none';p.style.display='flex';}}
+document.querySelectorAll('.ile.ouverte').forEach(function(o){o.addEventListener('click',function(ev){if(ev.target.closest('.b'))return;var e=o.parentNode;ouvrir(e.id);});});
+document.querySelectorAll('.b').forEach(function(b){b.addEventListener('click',function(ev){ev.stopPropagation();b.classList.toggle('on');});});
+var textes={1:'Le pupitre. Dis-moi dans Tokn : « P1 » et ce que tu changes. Je commence par les gels, puis le pupitre.',2:'La musique sur la pilule. Dis « P2 » dans Tokn ; je te proposerai de la tester après deux semaines de pupitre.',3:'La palette clavier. Dis « P3 » dans Tokn ; je la ferai en plus de la pile.',0:'Dis-moi dans Tokn ce que tu vois à la place, même en deux phrases dictées.'};
+document.querySelectorAll('.vote .puce').forEach(function(p){p.addEventListener('click',function(){document.querySelectorAll('.vote .puce').forEach(function(x){x.classList.remove('on')});p.classList.add('on');document.getElementById('bilan').textContent=textes[p.dataset.v];try{localStorage.setItem('ile-vote',p.dataset.v)}catch(e){}});});
+try{var v=localStorage.getItem('ile-vote');if(v!==null){var p=document.querySelector('.vote .puce[data-v="'+v+'"]');if(p)p.click();}}catch(e){}
+</script>
+</body>
+</html>
